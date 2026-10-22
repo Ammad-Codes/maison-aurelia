@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Aurelia | Luxury Watches &amp; Fine Jewellery</title>
+    <meta name="description"
+        content="Maison Aurelia — certified luxury watches and fine jewellery. Complimentary worldwide shipping on orders over $500, lifetime warranty and 30-day returns.">
+    <meta name="keywords" content="luxury watches, fine jewellery, rings, necklaces, bracelets, Maison Aurelia">
+    <meta name="author" content="Maison Aurelia">
+    <meta name="theme-color" content="#0B0B0B">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Maison Aurelia | Luxury Watches &amp; Fine Jewellery">
+    <meta property="og:description" content="Certified luxury watches and fine jewellery, delivered worldwide.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80">
+    <link rel="canonical" href="https://www.maisonaurelia.example/">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0B0B'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23D4AF37' font-family='Georgia'%3EA%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonts: Playfair Display (headings) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============ PAGE LOADER ============ -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader__mark"><span class="loader__letter">A</span></div>
+        <p class="loader__text">Maison Aurelia</p>
+    </div>
+
+    <a class="sr-only" href="#main">Skip to main content</a>
+
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- ============ 1. ANNOUNCEMENT BAR ============ -->
+    <div class="announce" id="announce" role="region" aria-label="Store announcements">
+        <div class="announce__track" id="announceTrack" aria-live="off">
+            <p class="announce__msg is-active">Complimentary worldwide shipping on orders over <span>$500</span></p>
+            <p class="announce__msg">Use code <span>VIP10</span> for 10% off your first order</p>
+            <p class="announce__msg">Every timepiece certified authentic &middot; Lifetime warranty</p>
+        </div>
+        <button class="announce__close" id="announceClose" type="button" aria-label="Close announcement bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- ============ 2. STICKY NAVBAR ============ -->
+    <header class="header" id="header">
+        <div class="container header__inner">
+            <a class="logo" href="#top" aria-label="Maison Aurelia home">
+                <span class="logo__name">Aurelia</span>
+                <span class="logo__sub">MAISON</span>
+            </a>
+
+            <nav class="nav" aria-label="Primary">
+                <ul class="nav__list">
+                    <li><a class="nav__link" href="#shop">Shop</a></li>
+                    <li><a class="nav__link" href="#collections">Collections</a></li>
+                    <li><a class="nav__link" href="#new-arrivals">New Arrivals</a></li>
+                    <li><a class="nav__link" href="#about">About</a></li>
+                    <li><a class="nav__link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__actions">
+                <button class="icon-btn" id="searchBtn" type="button" aria-label="Search products"
+                    aria-haspopup="dialog">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="M20 20l-3.5-3.5" />
+                    </svg>
+                </button>
+                <a class="icon-btn" href="#wishlist" id="wishlistBtn" aria-label="Wishlist, 0 items">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+                    </svg>
+                    <span class="badge" id="wishlistCount" aria-hidden="true">0</span>
+                </a>
+                <button class="icon-btn" id="cartBtn" type="button" aria-label="Open cart, 0 items"
+                    aria-controls="cartDrawer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <path d="M5 7h14l-1.2 12.2a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3L5 7z" />
+                        <path d="M9 7V5.5a3 3 0 0 1 6 0V7" />
+                    </svg>
+                    <span class="badge" id="cartCount" aria-hidden="true">0</span>
+                </button>
+                <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Open menu"
+                    aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile slide-in menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu__backdrop" data-close-menu></div>
+        <aside class="mobile-menu__panel" aria-label="Mobile navigation">
+            <div class="mobile-menu__top">
+                <span class="logo"><span class="logo__name">Aurelia</span></span>
+                <button class="icon-btn" type="button" data-close-menu aria-label="Close menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+            <nav aria-label="Mobile">
+                <div class="mobile-menu__links">
+                    <a href="#shop" data-close-menu>Shop</a>
+                    <a href="#collections" data-close-menu>Collections</a>
+                    <a href="#new-arrivals" data-close-menu>New Arrivals</a>
+                    <a href="#about" data-close-menu>About</a>
+                    <a href="#contact" data-close-menu>Contact</a>
+                </div>
+            </nav>
+            <p class="mobile-menu__foot">Concierge: +1 (800) 555-0199</p>
+        </aside>
+    </div>
+
+    <!-- Search overlay -->
+    <div class="search" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search products"
+        aria-hidden="true">
+        <div class="search__box">
+            <div class="search__row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="M20 20l-3.5-3.5" />
+                </svg>
+                <label class="sr-only" for="searchInput">Search products</label>
+                <input class="search__input" id="searchInput" type="search"
+                    placeholder="Search watches, rings, necklaces&hellip;" autocomplete="off">
+                <button class="icon-btn" type="button" data-close-search aria-label="Close search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search__results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <main id="main">
+        <div id="top"></div>
+
+        <!-- ============ 3. HERO SLIDER ============ -->
+        <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured collections">
+            <div class="hero__slides">
+                <article class="hero__slide is-active" aria-roledescription="slide" aria-label="1 of 3">
+                    <img class="hero__img"
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1920&q=80"
+                        alt="Gold luxury wristwatch resting on a dark marble surface" fetchpriority="high">
+                    <div class="hero__overlay"></div>
+                    <div class="hero__content container" data-hero-content>
+                        <p class="hero__eyebrow">The Aurelia Chronograph</p>
+                        <h1 class="hero__title" data-split="Timeless precision, worn in gold"></h1>
+                        <p class="hero__text">Swiss-certified movements housed in 18k champagne gold. Engineered to last
+                            generations.</p>
+                        <div class="hero__actions">
+                            <a class="btn btn--solid" href="#shop">Shop Now</a>
+                            <a class="btn btn--ghost" href="#collections">Explore Collection</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="hero__slide" aria-roledescription="slide" aria-label="2 of 3">
+                    <img class="hero__img"
+                        src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1920&q=80"
+                        alt="Brilliant-cut diamond solitaire ring in gold setting" loading="lazy">
+                    <div class="hero__overlay"></div>
+                    <div class="hero__content container" data-hero-content>
+                        <p class="hero__eyebrow">Fine Jewellery &middot; Bridal</p>
+                        <h2 class="hero__title" data-split="Brilliance that tells your story"></h2>
+                        <p class="hero__text">Hand-set diamonds, ethically sourced and certified by GIA for absolute
+                            clarity.</p>
+                        <div class="hero__actions">
+                            <a class="btn btn--solid" href="#shop">Shop Now</a>
+                            <a class="btn btn--ghost" href="#collections">Explore Collection</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="hero__slide" aria-roledescription="slide" aria-label="3 of 3">
+                    <img class="hero__img"
+                        src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1920&q=80"
+                        alt="Collection of gold rings and necklaces arranged on black velvet" loading="lazy">
+                    <div class="hero__overlay"></div>
+                    <div class="hero__content container" data-hero-content>
+                        <p class="hero__eyebrow">New Season</p>
+                        <h2 class="hero__title" data-split="Gold that moves with you"></h2>
+                        <p class="hero__text">Necklaces and bracelets in 18k gold, designed for the everyday luxury you
+                            deserve.</p>
+                        <div class="hero__actions">
+                            <a class="btn btn--solid" href="#shop">Shop Now</a>
+                            <a class="btn btn--ghost" href="#collections">Explore Collection</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <button class="hero__arrow hero__arrow--prev" type="button" data-hero-prev aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M15 5l-7 7 7 7" />
+                </svg>
+            </button>
+            <button class="hero__arrow hero__arrow--next" type="button" data-hero-next aria-label="Next slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+
+            <div class="hero__dots" role="group" aria-label="Choose slide">
+                <button class="hero__dot is-active" type="button" aria-label="Slide 1" aria-current="true"></button>
+                <button class="hero__dot" type="button" aria-label="Slide 2"></button>
+                <button class="hero__dot" type="button" aria-label="Slide 3"></button>
+            </div>
+        </section>
+
+        <!-- ============ 4. TRUST MARQUEE ============ -->
+        <section class="trust" aria-label="Trusted by">
+            <div class="marquee">
+                <div class="marquee__track" id="marqueeTrack">
+                    <!-- Filled by JS (duplicated for seamless loop) -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. SHOP BY CATEGORY ============ -->
+        <section class="section section--dark" id="collections" aria-labelledby="catTitle">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">Collections</span>
+                    <h2 id="catTitle">Shop by Category</h2>
+                    <div class="gold-rule"></div>
+                </header>
+
+                <div class="cats">
+                    <a class="cat reveal-zoom" href="#shop" data-filter-cat="watches" style="--d:0s">
+                        <img class="cat__img"
+                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+                            alt="Luxury gold watch close-up" loading="lazy">
+                        <span class="cat__overlay"></span>
+                        <span class="cat__body">
+                            <span class="cat__title">Watches</span>
+                            <span class="cat__count" data-count="watches">0 pieces</span>
+                            <span class="cat__link">Discover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></span>
+                        </span>
+                    </a>
+                    <a class="cat reveal-zoom" href="#shop" data-filter-cat="rings" style="--d:0.1s">
+                        <img class="cat__img"
+                            src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80"
+                            alt="Diamond ring in gold setting" loading="lazy">
+                        <span class="cat__overlay"></span>
+                        <span class="cat__body">
+                            <span class="cat__title">Rings</span>
+                            <span class="cat__count" data-count="rings">0 pieces</span>
+                            <span class="cat__link">Discover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></span>
+                        </span>
+                    </a>
+                    <a class="cat reveal-zoom" href="#shop" data-filter-cat="necklaces" style="--d:0.2s">
+                        <img class="cat__img"
+                            src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80"
+                            alt="Gold necklace with pendant on display" loading="lazy">
+                        <span class="cat__overlay"></span>
+                        <span class="cat__body">
+                            <span class="cat__title">Necklaces</span>
+                            <span class="cat__count" data-count="necklaces">0 pieces</span>
+                            <span class="cat__link">Discover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></span>
+                        </span>
+                    </a>
+                    <a class="cat reveal-zoom" href="#shop" data-filter-cat="bracelets" style="--d:0.3s">
+                        <img class="cat__img"
+                            src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=800&q=80"
+                            alt="Gold bracelet on a dark background" loading="lazy">
+                        <span class="cat__overlay"></span>
+                        <span class="cat__body">
+                            <span class="cat__title">Bracelets</span>
+                            <span class="cat__count" data-count="bracelets">0 pieces</span>
+                            <span class="cat__link">Discover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.6" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 6. FEATURED PRODUCTS + 7. FILTER & SORT ============ -->
+        <section class="section" id="shop" aria-labelledby="shopTitle">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">The Boutique</span>
+                    <h2 id="shopTitle">Featured Pieces</h2>
+                    <p>Each piece is certified, hand-finished and backed by our lifetime warranty.</p>
+                    <div class="gold-rule"></div>
+                </header>
+
+                <!-- Filter & sort bar -->
+                <form class="toolbar reveal" id="filterBar" role="search" aria-label="Filter and sort products"
+                    onsubmit="return false;">
+                    <div class="toolbar__row">
+                        <fieldset class="chips" style="border:0;padding:0;margin:0;">
+                            <legend class="sr-only">Filter by category</legend>
+                            <button class="chip is-active" type="button" data-cat="all" aria-pressed="true">All</button>
+                            <button class="chip" type="button" data-cat="watches" aria-pressed="false">Watches</button>
+                            <button class="chip" type="button" data-cat="rings" aria-pressed="false">Rings</button>
+                            <button class="chip" type="button" data-cat="necklaces"
+                                aria-pressed="false">Necklaces</button>
+                            <button class="chip" type="button" data-cat="bracelets"
+                                aria-pressed="false">Bracelets</button>
+                        </fieldset>
+                        <div class="price-filter">
+                            <label for="priceRange">Max price</label>
+                            <input class="range" id="priceRange" type="range" min="0" max="20000" step="100"
+                                value="20000" aria-describedby="priceOut">
+                            <output id="priceOut" for="priceRange">Up to $20,000</output>
+                        </div>
+                    </div>
+                    <div class="toolbar__row">
+                        <p class="result-count" id="resultCount" aria-live="polite">Showing 0 pieces</p>
+                        <div>
+                            <label class="sr-only" for="sortSelect">Sort products</label>
+                            <select class="select" id="sortSelect" aria-label="Sort products">
+                                <option value="newest">Sort: Newest</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Product grid (rendered by script.js) -->
+                <div class="grid" id="productGrid" role="list" aria-label="Products"></div>
+                <span id="new-arrivals" class="anchor-offset" aria-hidden="true"></span>
+            </div>
+        </section>
+
+        <!-- ============ 9. LIMITED EDITION (parallax + countdown) ============ -->
+        <section class="limited section--dark" id="limited" aria-labelledby="limitedTitle">
+            <img class="limited__bg" data-parallax
+                src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1920&q=80"
+                alt="" loading="lazy" aria-hidden="true">
+            <div class="container limited__inner reveal">
+                <span class="eyebrow">Limited Edition &middot; Only 100 Pieces</span>
+                <h2 id="limitedTitle" class="gold-text">The Aurelia Noir 1925</h2>
+                <p>A numbered, hand-engraved timepiece in black PVD steel and 18k gold. Once it is gone, it is gone.</p>
+                <a class="btn btn--solid" href="#shop">Reserve Yours</a>
+                <div class="countdown" id="countdown" role="timer" aria-live="off"
+                    aria-label="Time remaining until the edition closes">
+                    <div class="countdown__unit"><span class="countdown__num" data-unit="days">00</span><span
+                            class="countdown__label">Days</span></div>
+                    <div class="countdown__unit"><span class="countdown__num" data-unit="hours">00</span><span
+                            class="countdown__label">Hours</span></div>
+                    <div class="countdown__unit"><span class="countdown__num" data-unit="minutes">00</span><span
+                            class="countdown__label">Minutes</span></div>
+                    <div class="countdown__unit"><span class="countdown__num" data-unit="seconds">00</span><span
+                            class="countdown__label">Seconds</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 10. WHY CHOOSE US ============ -->
+        <section class="section section--charcoal" aria-labelledby="whyTitle">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">The Aurelia Promise</span>
+                    <h2 id="whyTitle">Why Choose Us</h2>
+                    <div class="gold-rule"></div>
+                </header>
+                <div class="features">
+                    <article class="feature reveal" style="--d:0s">
+                        <div class="feature__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z" />
+                                <path d="M9 12l2 2 4-4" />
+                            </svg>
+                        </div>
+                        <span class="feature__num" data-count-to="12480">0</span>
+                        <h3 class="feature__title">Certified Authentic</h3>
+                        <p class="feature__text">Every piece ships with an authenticity certificate.</p>
+                    </article>
+                    <article class="feature reveal" style="--d:0.1s">
+                        <div class="feature__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" />
+                                <circle cx="7" cy="17.5" r="1.8" />
+                                <circle cx="17" cy="17.5" r="1.8" />
+                            </svg>
+                        </div>
+                        <span class="feature__num" data-count-to="50" data-suffix="K+">0</span>
+                        <h3 class="feature__title">Free Shipping</h3>
+                        <p class="feature__text">Complimentary insured worldwide delivery on orders over $500.</p>
+                    </article>
+                    <article class="feature reveal" style="--d:0.2s">
+                        <div class="feature__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <circle cx="12" cy="10" r="6" />
+                                <path d="M8.5 15L7 21l5-2.5L17 21l-1.5-6" />
+                            </svg>
+                        </div>
+                        <span class="feature__num" data-count-to="100" data-suffix="%">0</span>
+                        <h3 class="feature__title">Lifetime Warranty</h3>
+                        <p class="feature__text">Free servicing and repairs for the life of your piece.</p>
+                    </article>
+                    <article class="feature reveal" style="--d:0.3s">
+                        <div class="feature__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path d="M4 12a8 8 0 1 0 2.3-5.6" />
+                                <path d="M4 4v4h4" />
+                            </svg>
+                        </div>
+                        <span class="feature__num" data-count-to="30" data-suffix="-Day">0</span>
+                        <h3 class="feature__title">30-Day Returns</h3>
+                        <p class="feature__text">Change your mind? Return any piece within 30 days, no questions asked.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 11. TESTIMONIALS (auto-play carousel) ============ -->
+        <section class="section" aria-labelledby="testiTitle">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">Client Stories</span>
+                    <h2 id="testiTitle">Words From Our Clients</h2>
+                    <div class="gold-rule"></div>
+                </header>
+                <div class="testi reveal" id="testimonials" aria-roledescription="carousel"
+                    aria-label="Customer testimonials">
+                    <article class="testi__slide is-active" aria-roledescription="slide">
+                        <img class="testi__photo"
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"
+                            alt="Portrait of Sophia R., a Maison Aurelia customer" loading="lazy">
+                        <div class="testi__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testi__quote">&ldquo;The Aurelia Chronograph arrived in a box that felt like an
+                            heirloom. The finish is flawless and the movement is silent perfection.&rdquo;</p>
+                        <p class="testi__name">Sophia R.</p>
+                        <p class="testi__role">Verified Client &middot; New York</p>
+                    </article>
+                    <article class="testi__slide" aria-roledescription="slide">
+                        <img class="testi__photo"
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
+                            alt="Portrait of Daniel K., a Maison Aurelia customer" loading="lazy">
+                        <div class="testi__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testi__quote">&ldquo;I proposed with a solitaire from Aurelia. The certificate, the
+                            packaging and the team made the whole experience unforgettable.&rdquo;</p>
+                        <p class="testi__name">Daniel K.</p>
+                        <p class="testi__role">Verified Client &middot; London</p>
+                    </article>
+                    <article class="testi__slide" aria-roledescription="slide">
+                        <img class="testi__photo"
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80"
+                            alt="Portrait of Amara O., a Maison Aurelia customer" loading="lazy">
+                        <div class="testi__stars" aria-label="4 out of 5 stars">★★★★☆</div>
+                        <p class="testi__quote">&ldquo;The gold bracelet is even more beautiful in person. Shipping was
+                            fast and tracked every step of the way.&rdquo;</p>
+                        <p class="testi__name">Amara O.</p>
+                        <p class="testi__role">Verified Client &middot; Dubai</p>
+                    </article>
+                </div>
+                <div class="testi__dots" role="group" aria-label="Choose testimonial">
+                    <button class="testi__dot is-active" type="button" aria-label="Testimonial 1"
+                        aria-current="true"></button>
+                    <button class="testi__dot" type="button" aria-label="Testimonial 2"></button>
+                    <button class="testi__dot" type="button" aria-label="Testimonial 3"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 12. INSTAGRAM STYLE GALLERY ============ -->
+        <section class="section section--dark" aria-labelledby="galleryTitle">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">@maisonaurelia</span>
+                    <h2 id="galleryTitle">Worn Around the World</h2>
+                    <div class="gold-rule"></div>
+                </header>
+                <div class="gallery reveal" id="gallery">
+                    <a class="gallery__item" href="#shop" aria-label="View gold watch on wrist">
+                        <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=600&q=80"
+                            alt="Gold watch worn on a wrist" loading="lazy">
+                        <span class="gallery__overlay"><span class="gallery__icon"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                                </svg></span></span>
+                    </a>
+                    <a class="gallery__item" href="#shop" aria-label="View diamond ring close-up">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80"
+                            alt="Close-up of a diamond ring" loading="lazy">
+                        <span class="gallery__overlay"><span class="gallery__icon"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                                </svg></span></span>
+                    </a>
+                    <a class="gallery__item" href="#shop" aria-label="View pearl necklace">
+                        <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=600&q=80"
+                            alt="Layered gold necklace on a model" loading="lazy">
+                        <span class="gallery__overlay"><span class="gallery__icon"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                                </svg></span></span>
+                    </a>
+                    <a class="gallery__item" href="#shop" aria-label="View gold bracelet stack">
+                        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=600&q=80"
+                            alt="Stack of gold bracelets" loading="lazy">
+                        <span class="gallery__overlay"><span class="gallery__icon"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                                </svg></span></span>
+                    </a>
+                    <a class="gallery__item" href="#shop" aria-label="View luxury watch face">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80"
+                            alt="Detailed luxury watch face" loading="lazy">
+                        <span class="gallery__overlay"><span class="gallery__icon"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                                </svg></span></span>
+                    </a>
+                    <a class="gallery__item" href="#shop" aria-label="View gold earrings">
+                        <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80"
+                            alt="Gold drop earrings" loading="lazy">
+                        <span class="gallery__overlay"><span class="gallery__icon"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                                </svg></span></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- @@NEXT@@ -->
+        <!-- ============ 13. NEWSLETTER / ABOUT / CONTACT ============ -->
+        <!-- ============ 13a. NEWSLETTER ============ -->
+        <section class="section" aria-labelledby="newsTitle">
+            <div class="container">
+                <div class="newsletter reveal-zoom">
+                    <span class="eyebrow">The Aurelia Letter</span>
+                    <h2 id="newsTitle">Private Previews, Delivered</h2>
+                    <p>Be first to see new arrivals and invitation-only releases. One letter a month, never more.</p>
+                    <form class="newsletter__form" id="newsletterForm" novalidate>
+                        <label class="sr-only" for="newsEmail">Email address</label>
+                        <input class="input" id="newsEmail" name="email" type="email" placeholder="Your email address"
+                            autocomplete="email" required aria-describedby="newsMsg">
+                        <button class="btn btn--solid" type="submit">Subscribe</button>
+                    </form>
+                    <p class="field-msg" id="newsMsg" role="status" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 13b. ABOUT + CONTACT ============ -->
+        <section class="section section--charcoal" id="about" aria-labelledby="aboutTitle">
+            <div class="container intro-split">
+                <div class="intro-split__media reveal-left">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=80"
+                        alt="Master watchmaker inspecting a movement under a loupe" loading="lazy">
+                </div>
+                <div class="intro-split__body reveal">
+                    <span class="eyebrow">About Maison Aurelia</span>
+                    <h2 id="aboutTitle">Craft Passed Down Through Generations</h2>
+                    <p>Founded in Geneva in 1925, Maison Aurelia brings together master watchmakers and gemologists to
+                        create pieces meant to be treasured for life.</p>
+                    <p>Every watch is regulated in-house and every stone is independently graded. We believe true luxury
+                        is quiet, precise and built to outlast trends.</p>
+                    <div class="stat-row">
+                        <div><strong data-count-to="99">0</strong><span>Years of craft</span></div>
+                        <div><strong data-count-to="18">0</strong><span>Master artisans</span></div>
+                        <div><strong data-count-to="40">0</strong><span>Countries served</span></div>
+                    </div>
+                    <a class="btn btn--ghost" href="#contact">Book a Private Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact" aria-labelledby="contactTitle">
+            <div class="container contact-grid">
+                <div class="reveal-left">
+                    <span class="eyebrow">Contact</span>
+                    <h2 id="contactTitle">We Would Love to Hear From You</h2>
+                    <p class="contact-card-intro" style="color:var(--c-muted)">Our concierge team replies within one
+                        business day.</p>
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <h3>Boutique</h3>
+                            <p>18 Rue du Rhône, Geneva, Switzerland</p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>Concierge</h3>
+                            <p><a href="tel:+18005550199">+1 (800) 555-0199</a></p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>Email</h3>
+                            <p><a href="mailto:concierge@maisonaurelia.example">concierge@maisonaurelia.example</a></p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form reveal" id="contactForm" novalidate>
+                    <label>Full name
+                        <input class="input" name="name" type="text" required autocomplete="name"
+                            placeholder="Jane Doe">
+                    </label>
+                    <label>Email
+                        <input class="input" name="email" type="email" required autocomplete="email"
+                            placeholder="jane@example.com">
+                    </label>
+                    <label>Message
+                        <textarea class="input" name="message" required placeholder="How may we assist you?"></textarea>
+                    </label>
+                    <button class="btn btn--solid btn--block" type="submit">Send Message</button>
+                    <p class="field-msg" id="contactMsg" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ 14. FOOTER ============ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a class="logo" href="#top" aria-label="Maison Aurelia home"><span
+                            class="logo__name">Aurelia</span><span class="logo__sub">MAISON</span></a>
+                    <p>Certified luxury watches and fine jewellery, crafted in Geneva since 1925.</p>
+                    <div class="socials">
+                        <a class="social" href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                                aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a class="social" href="https://facebook.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.6V21h2.9z" />
+                            </svg>
+                        </a>
+                        <a class="social" href="https://pinterest.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Pinterest">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.9 3.4-.3 1 .5 1.9 1.5 1.9 1.8 0 3.2-1.9 3.2-4.7 0-2.5-1.8-4.2-4.3-4.2-2.9 0-4.6 2.2-4.6 4.4 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.2c0 .2-.2.3-.4.2-1.3-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.6-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.1l-.6 2.4c-.2.9-.8 2-1.2 2.7A10 10 0 1 0 12 2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <nav aria-label="Shop links">
+                    <h3>Shop</h3>
+                    <ul class="footer__links">
+                        <li><a href="#shop">Watches</a></li>
+                        <li><a href="#shop">Rings</a></li>
+                        <li><a href="#shop">Necklaces</a></li>
+                        <li><a href="#shop">Bracelets</a></li>
+                        <li><a href="#new-arrivals">New Arrivals</a></li>
+                    </ul>
+                </nav>
+
+                <nav aria-label="Company links">
+                    <h3>Help</h3>
+                    <ul class="footer__links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">Shipping &amp; Returns</a></li>
+                        <li><a href="#contact">Warranty</a></li>
+                        <li><a href="#contact">Size Guide</a></li>
+                    </ul>
+                </nav>
+
+                <div>
+                    <h3>Contact</h3>
+                    <ul class="footer__contact">
+                        <li>18 Rue du Rhône, Geneva</li>
+                        <li><a href="tel:+18005550199">+1 (800) 555-0199</a></li>
+                        <li><a href="mailto:concierge@maisonaurelia.example">concierge@maisonaurelia.example</a></li>
+                    </ul>
+                    <h3 style="margin-top:28px;">We Accept</h3>
+                    <div class="payments" aria-label="Accepted payment methods">
+                        <span class="pay" title="Visa"><svg viewBox="0 0 64 20" role="img" aria-label="Visa"><text
+                                    x="32" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700"
+                                    font-style="italic" font-size="17" fill="currentColor">VISA</text></svg></span>
+                        <span class="pay" title="Mastercard"><svg viewBox="0 0 64 20" role="img"
+                                aria-label="Mastercard">
+                                <circle cx="24" cy="10" r="7" fill="currentColor" opacity="0.85" />
+                                <circle cx="40" cy="10" r="7" fill="currentColor" opacity="0.5" />
+                            </svg></span>
+                        <span class="pay" title="American Express"><svg viewBox="0 0 64 20" role="img"
+                                aria-label="American Express"><text x="32" y="14" text-anchor="middle"
+                                    font-family="Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="1"
+                                    fill="currentColor">AMEX</text></svg></span>
+                        <span class="pay" title="PayPal"><svg viewBox="0 0 64 20" role="img" aria-label="PayPal"><text
+                                    x="32" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700"
+                                    font-style="italic" font-size="14" fill="currentColor">PayPal</text></svg></span>
+                        <span class="pay" title="Apple Pay"><svg viewBox="0 0 64 20" role="img"
+                                aria-label="Apple Pay"><text x="32" y="14" text-anchor="middle"
+                                    font-family="Arial, sans-serif" font-weight="600" font-size="12"
+                                    fill="currentColor">Apple Pay</text></svg></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; <span id="year">2026</span> Maison Aurelia. All rights reserved.</p>
+                <nav aria-label="Legal">
+                    <a href="#contact">Privacy</a>
+                    <a href="#contact">Terms</a>
+                    <a href="#contact">Cookies</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ CART DRAWER ============ -->
+    <div class="cart-overlay" id="cartOverlay" data-close-cart aria-hidden="true"></div>
+    <aside class="cart" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+        <div class="cart__head">
+            <h2 id="cartTitle">Your Cart</h2>
+            <button class="icon-btn" type="button" data-close-cart aria-label="Close cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart__items" id="cartItems"></div>
+        <div class="cart__foot" id="cartFoot">
+            <form class="coupon" id="couponForm" novalidate>
+                <label class="sr-only" for="couponInput">Discount code</label>
+                <input class="input" id="couponInput" type="text" placeholder="Discount code (try VIP10)"
+                    autocomplete="off">
+                <button class="btn btn--small" type="submit">Apply</button>
+            </form>
+            <p class="field-msg" id="couponMsg" role="status" aria-live="polite"></p>
+            <div class="totals">
+                <div><span>Subtotal</span><span id="tSubtotal">$0.00</span></div>
+                <div><span>Shipping</span><span id="tShipping">$0.00</span></div>
+                <div><span>Tax (8%)</span><span id="tTax">$0.00</span></div>
+                <div class="is-discount" id="tDiscountRow" hidden><span>Discount (<span
+                            id="tDiscountLabel">VIP10</span>)</span><span id="tDiscount">-$0.00</span></div>
+                <div class="grand"><span>Total</span><span id="tTotal">$0.00</span></div>
+            </div>
+            <button class="btn btn--solid" type="button" id="checkoutBtn">Checkout</button>
+            <p class="cart__note">Free shipping on orders over $500 &middot; Secure checkout</p>
+        </div>
+    </aside>
+
+    <!-- ============ QUICK VIEW MODAL ============ -->
+    <div class="modal" id="quickModal" role="dialog" aria-modal="true" aria-labelledby="qvTitle" aria-hidden="true">
+        <div class="modal__dialog" id="quickDialog"></div>
+    </div>
+
+    <!-- ============ CHECKOUT MODAL ============ -->
+    <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="coTitle" aria-hidden="true">
+        <div class="modal__dialog">
+            <button class="modal__close" type="button" data-close-checkout aria-label="Close checkout summary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+            <div class="checkout" id="checkoutBody"></div>
+        </div>
+    </div>
+
+    <!-- ============ TOASTS, BACK TO TOP, CURSOR ============ -->
+    <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
