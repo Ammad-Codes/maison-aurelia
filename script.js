@@ -419,19 +419,22 @@
         el.setAttribute('aria-label', text);
         el.textContent = '';
         let delay = 0;
-        [...text].forEach((ch) => {
-            const span = document.createElement('span');
-            if (ch === ' ') {
-                span.className = 'space';
-                span.innerHTML = '&nbsp;';
-            } else {
+        text.split(' ').forEach((word, wi, arr) => {
+            const w = document.createElement('span');
+            w.className = 'word';
+            w.style.display = 'inline-block';
+            w.style.whiteSpace = 'nowrap';
+            [...word].forEach((ch) => {
+                const span = document.createElement('span');
                 span.className = 'char';
                 span.textContent = ch;
                 span.setAttribute('aria-hidden', 'true');
                 span.style.transitionDelay = `${delay}ms`;
                 delay += 30;
-            }
-            el.appendChild(span);
+                w.appendChild(span);
+            });
+            el.appendChild(w);
+            if (wi < arr.length - 1) el.appendChild(document.createTextNode(' '));
         });
     }
     function animateHeading(slide) {
