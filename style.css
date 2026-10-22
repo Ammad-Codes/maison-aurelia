@@ -3179,3 +3179,5 @@ input.is-invalid {
 .announce.is-hidden {
     display: none;
 }
+/* Hero image behind the text */
+.hero__img { position: absolute; inset: 0; }
